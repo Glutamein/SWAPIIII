@@ -34,6 +34,11 @@ function loadComplete(evt) {
   step++;
 }
 
+function triviaHandler(){
+  var text = this.responceText;
+  console.log(JSON.parse(text));
+}
+
 type = 'people';
 id_num = Math.floor(Math.random()*89);
 findData();
