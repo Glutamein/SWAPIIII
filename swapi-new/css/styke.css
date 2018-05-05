@@ -1,11 +1,23 @@
 body{
-    background-color: chartreuse;
+    background-color: #abcdef;
 }
 
 h2{
-    font-family: cursive;
+    font-family: cursive; 
 }
 
 div{
-    
+    /* background-color: chartreuse; */
+    /* background-image: url('images/keep_calm_and_eat_a_bag_of_dicks_grande.png'); */
+}
+
+#buttons{
+    align-items: center;
+    background-color: black;
+}
+
+.b{
+    align-content: center;
+    padding: 2px;
+    margin: 2px,  3px;
 }
