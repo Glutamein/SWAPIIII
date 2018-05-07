@@ -12,17 +12,6 @@ div{
     
 }
 
-#buttons{
-    align-items: center;
-    background-color: black;
-}
-
-.b{
-    align-content: center;
-    padding: 2px;
-    margin: 2px,  3px;
-}
-
 table{
     border: 2px black solid;
     color: rgb(255, 153, 51, 0.8);
