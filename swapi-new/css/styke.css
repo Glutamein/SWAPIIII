@@ -1,6 +1,6 @@
-body{
+html{
     background-color: #abcdef;
-    background-image: url('images/cloneBoi.jpg');
+    background-image: url('../images/cloneBoi.jpg');
  }
 
 h2{
