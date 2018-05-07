@@ -1,6 +1,7 @@
 body{
     background-color: #abcdef;
-}
+    background-image: url('images/cloneBoi.jpg');
+ }
 
 h2{
     font-family: cursive; 
@@ -8,7 +9,7 @@ h2{
 
 div{
     /* background-color: chartreuse; */
-    /* background-image: url('images/keep_calm_and_eat_a_bag_of_dicks_grande.png'); */
+    
 }
 
 #buttons{
@@ -20,4 +21,13 @@ div{
     align-content: center;
     padding: 2px;
     margin: 2px,  3px;
+}
+
+table{
+    border: 2px black solid;
+    color: rgb(255, 153, 51, 0.8);
+}
+
+a{
+    margin-left: 50px;
 }
