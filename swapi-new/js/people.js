@@ -4,30 +4,49 @@ window.onload = function () {
     var id_num;
     var url;
     var step;
+    var answers = [];
     var holder = [];
     var request;
 
     function question() {
         var qNum = Math.floor((Math.random() * 88) + 1);
-        var qType = Math.floor(Math.random() * 5);
-        findData(qNum);
-        // switch (qType) {
-        //     case 0:
-        // var words = document.getElementById("quest");
-        // words.innerHTML = "<div>What species is" + holder[1].name + "?</div>";
-        // }
-
+        findData("people", qNum);
     }
     question();
 
     function loadingness() {
+        var qType = Math.floor(Math.random() * 2);
         var words = document.getElementById("quest");
-        words.innerHTML = "<div>What species is " + holder[0].name + "?</div>";
+        var ans = document.getElementById("ans");
+        var ans2 = document.getElementById("ans2");
+        var ans3 = document.getElementById("ans3");
+        var ans4 = document.getElementById("ans4");
+        var species = Math.floor(Math.random()*37);
+        console.log(species);
+        switch (qType) {
+            case 0:
+                answers = ["Hoomen", "Droid", "Wookie", "Rodian", "Hutt", "Yoda's species"
+                    , "Trandoshan", "Mon Calamari", "Ewok", "Sullustan", "Neimodian", "Gungan", "Toydarian", "Dug"
+                    , "Twi'lek", "Aleena", "Vulptereen", "Xexto", "Toong", "Cerean", "Nautolan", "Zabrak", "Tholothian"
+                    , "Iktotchi", "Quermian", "Kel Dor", "Chagrian", "Geonosian", "Mirialan", "Clawdite", "Besalisk", "Kaminoan"
+                    , "Skakoan", "Muun", "Togruta", "Kaleesh", "Pau'an"];
+                words.innerHTML = "<div>What species is " + holder[0].name + "?</div>";
+                break;
+            case 1:
+                words.innerHTML = "<div>Where is " + holder[0].name + " from?</div>";
+                break;
+            
+        }
+        ans.innerHTML = "<button>" + answers[species] + "</button>"
+        ans2.innerHTML = "<button>" + holder[1].name + "</button>";
     }
 
-    function findData(num) {
-        url = 'https://swapi.co/api/people/' + num;
-        // step = 1;
+    function answers() {
+    }
+
+    function findData(type, num) {
+        url = 'https://swapi.co/api/' + type + '/' + num;
+        step = 1;
         loadData(url);
     }
 
@@ -53,6 +72,7 @@ window.onload = function () {
         loadingness();
         if (step == 1) {
             loadData(data.species);
+            answers();
         }
         if (step == 2) {
             loadData(data.homeworld);
@@ -61,7 +81,6 @@ window.onload = function () {
             console.log(holder);
         }
         step++;
-
     }
 
     function triviaHandler() {
