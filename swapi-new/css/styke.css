@@ -1,20 +1,20 @@
-body{
-    background-color: #abcdef;
-    background-image: url('images/cloneBoi.jpg');
+html{
+    background-image: url('../images/cloneBoi.jpg');
  }
 
 h2{
+    border-radius: 25px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    text-align: center;
     font-family: cursive; 
-}
-
-div{
-    /* background-color: chartreuse; */
-    
+    border: 3px orange dashed;
+   background: chartreuse;
 }
 
 table{
-    border: 2px black solid;
-    color: rgb(255, 153, 51, 0.8);
+    border: 2px  white solid;
+
 }
 
 a{
