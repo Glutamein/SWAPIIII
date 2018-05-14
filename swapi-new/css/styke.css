@@ -20,3 +20,8 @@ table{
 a{
     margin-left: 50px;
 }
+
+div{
+    background-color: beige;
+    color: red;
+}

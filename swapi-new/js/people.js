@@ -14,14 +14,19 @@ window.onload = function () {
     }
     question();
 
+    function youRight() {
+        console.log("You Right!")
+    }
+
     function loadingness() {
-        var qType = Math.floor(Math.random() * 2);
+        var qType = Math.floor(Math.random());
         var words = document.getElementById("quest");
         var ans = document.getElementById("ans");
-        var ans2 = document.getElementById("ans2");
+        var ans2 = document.getElementById("butt2");
+        // var button = document.createElement("button");
         var ans3 = document.getElementById("ans3");
         var ans4 = document.getElementById("ans4");
-        var species = Math.floor(Math.random()*37);
+        var species = Math.floor(Math.random() * 37);
         console.log(species);
         switch (qType) {
             case 0:
@@ -35,23 +40,21 @@ window.onload = function () {
             case 1:
                 words.innerHTML = "<div>Where is " + holder[0].name + " from?</div>";
                 break;
-            
+
         }
-        ans.innerHTML = "<button>" + answers[species] + "</button>"
-        ans2.innerHTML = "<button>" + holder[1].name + "</button>";
+        ans.innerHTML = "<button>" + answers[species] + "</button>";
+        ans3.innerHTML = "<button>" + answers[species + 4] + "</button>";
+        ans4.innerHTML = "<button>" + answers[species - 5] + "</button>";
+        // button.innerHTML = holder[1].name;
+        // button.setAttribute("onClick", youRight());
+        ans2.innerHTML = holder[1].name;
     }
 
-    function answers() {
-    }
 
     function findData(type, num) {
         url = 'https://swapi.co/api/' + type + '/' + num;
         step = 1;
         loadData(url);
-    }
-
-    function person() {
-
     }
 
     function home() {
@@ -69,16 +72,16 @@ window.onload = function () {
         data = JSON.parse(request.responseText);
         console.log(data.name);
         holder.push(data);
-        loadingness();
         if (step == 1) {
             loadData(data.species);
-            answers();
+            // answers();
         }
         if (step == 2) {
             loadData(data.homeworld);
         }
         if (step == 3) {
             console.log(holder);
+            loadingness();
         }
         step++;
     }
