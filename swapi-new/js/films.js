@@ -12,8 +12,8 @@ window.onload = function () {
     var request;
 
     function question() {
-        var qNum = Math.floor((Math.random() * 88) + 1);
-        findData("people", qNum);
+        var qNum = Math.floor((Math.random() * 7) + 1);
+        findData("films", qNum);
     }
     question();
 
@@ -26,34 +26,29 @@ window.onload = function () {
         // var button = document.createElement("button");
         var ans3 = document.getElementById("ans3");
         var ans4 = document.getElementById("ans4");
+        var episode = Math.floor(Math.random() * 7);
         var species = Math.floor(Math.random() * 37);
-        var planets = Math.floor(Math.random() * 61);
-        console.log(species);
+        // console.log(species);
         switch (qType) {
             case 0:
+                answers = [1, 2, 3, 4, 5, 6, 7];
+                words.innerHTML = "<div>What film number is " + holder[0].title + "?</div>";
+                ans.innerHTML = "<button>" + answers[episode] + "</button>";
+                ans2.innerHTML = "<button onclick='youRight()'>" + holder[0].episode_id + "</button>";
+                ans3.innerHTML = "<button>" + answers[episode + 2] + "</button>";
+                ans4.innerHTML = "<button>" + answers[episode - 1] + "</button>";
+                break;
+            case 1:
                 answers = ["Hoomen", "Droid", "Wookie", "Rodian", "Hutt", "Yoda's species"
                     , "Trandoshan", "Mon Calamari", "Ewok", "Sullustan", "Neimodian", "Gungan", "Toydarian", "Dug"
                     , "Twi'lek", "Aleena", "Vulptereen", "Xexto", "Toong", "Cerean", "Nautolan", "Zabrak", "Tholothian"
                     , "Iktotchi", "Quermian", "Kel Dor", "Chagrian", "Geonosian", "Mirialan", "Clawdite", "Besalisk", "Kaminoan"
                     , "Skakoan", "Muun", "Togruta", "Kaleesh", "Pau'an"];
-                words.innerHTML = "<div>What species is " + holder[0].name + "?</div>";
+                words.innerHTML = "<div>What species is in " + holder[0].title + "?</div>";
                 ans.innerHTML = "<button>" + answers[species] + "</button>";
                 ans2.innerHTML = "<button onclick='youRight()'>" + holder[1].name + "</button>";
                 ans3.innerHTML = "<button>" + answers[species + 4] + "</button>";
                 ans4.innerHTML = "<button>" + answers[species - 5] + "</button>";
-                break;
-            case 1:
-                answers = ["Tatooine", "Alderaan", "Yavin IV", "Hoth", "Dagobah", "Bespin", "Endor", "Naboo", "Coruscant", "Kamino", "Geonosis", "Utapau",
-                    "Mustafar", "Kashyyyk", "Polis Massa", "Mygeeto", "Felucia", "Cato Neimoidia", "Saleucami", "Stewjon", "Eriadu", "Corellia",
-                    "Rodia", "Nal Hutta", "Dantooine", "Bestine IV", "Ord Mantell", "unknown", "Trandosha", "Socorro", "Mon Cala", "Chandrila",
-                    "Sullust", "Toydaria", "Malastare", "Dathomir", "Ryloth", "Aleen Minor", "Vulpter", "Troiken", "Tund", "Haruun Kal", "Cerea",
-                    "Glee Anselm", "Iridonia", "Tholoth", "Iktotch", "Quermia", "Dorin", "Champala", "Mirial", "Serenno", "Concord Dawn", "Zolan",
-                    "Ojom", "Skako", "Muunilinst", "Shili", "Kalee", "Umbara", "Jakku"];
-                words.innerHTML = "<div>Where is " + holder[0].name + " from?</div>";
-                ans.innerHTML = "<button>" + answers[planets] + "</button>";
-                ans2.innerHTML = "<button onclick='youRight()'>" + holder[2].name + "</button>";
-                ans3.innerHTML = "<button>" + answers[planets + 4] + "</button>";
-                ans4.innerHTML = "<button>" + answers[planets - 5] + "</button>";
                 break;
         }
     }
@@ -78,10 +73,10 @@ window.onload = function () {
 
     function loadComplete(evt) {
         data = JSON.parse(request.responseText);
-        console.log(data.name);
+        console.log(data);
         holder.push(data);
         if (step == 1) {
-            loadData(data.species);
+            loadData(data.species[0]);
             // answers();
         }
         if (step == 2) {

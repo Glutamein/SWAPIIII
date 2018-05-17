@@ -12,8 +12,8 @@ window.onload = function () {
     var request;
 
     function question() {
-        var qNum = Math.floor((Math.random() * 88) + 1);
-        findData("people", qNum);
+        var qNum = Math.floor((Math.random() * 61) + 1);
+        findData("planets", qNum);
     }
     question();
 
@@ -26,21 +26,25 @@ window.onload = function () {
         // var button = document.createElement("button");
         var ans3 = document.getElementById("ans3");
         var ans4 = document.getElementById("ans4");
-        var species = Math.floor(Math.random() * 37);
+        var people = Math.floor(Math.random() * 87);
         var planets = Math.floor(Math.random() * 61);
-        console.log(species);
+        // console.log(species);
         switch (qType) {
             case 0:
-                answers = ["Hoomen", "Droid", "Wookie", "Rodian", "Hutt", "Yoda's species"
-                    , "Trandoshan", "Mon Calamari", "Ewok", "Sullustan", "Neimodian", "Gungan", "Toydarian", "Dug"
-                    , "Twi'lek", "Aleena", "Vulptereen", "Xexto", "Toong", "Cerean", "Nautolan", "Zabrak", "Tholothian"
-                    , "Iktotchi", "Quermian", "Kel Dor", "Chagrian", "Geonosian", "Mirialan", "Clawdite", "Besalisk", "Kaminoan"
-                    , "Skakoan", "Muun", "Togruta", "Kaleesh", "Pau'an"];
-                words.innerHTML = "<div>What species is " + holder[0].name + "?</div>";
-                ans.innerHTML = "<button>" + answers[species] + "</button>";
+                answers = ["Luke Skywalker", "C-3PO", "R2-D2", "Darth Vader", "Leia Organa", "Owen Lars", "Beru Whitesun Lars", "R5-D4", "Biggs Darklighter",
+                    "Obi-Wan Kenobi", "Anakin Skywalker", "Wilhuff Tarkin", "Chewbacca", "Han Solo", "Greedo", "Jabba Desilijic Tiure", "Wedge Antilles",
+                    "Jek Tono Porkins", "Yoda", "Palpatine", "Boba Fett", "IG-88", "Bossk", "Lando Calrissian", "Lobot", "Ackbar", "Mon Mothma", "Arvel Crynyd",
+                    "Wicket Systri Warrick", "Nien Nunb", "Qui-Gon Jinn", "Nute Gunray", "Finis Valorum", "Padme Amidala", "Jar Jar Binks", "Roos Tarpals",
+                    "Rugor Nass", "Ric Olie", "Watto", "Sebulba", "Quarsh Panaka", "Shmi Skywalker", "Darth Maul", "Bib Fortuna", "Ayla Secura", "Ratts Tyerell",
+                    "Dud Bolt", "Gasgano", "Ben Quadinaros", "Mace Windu", "Ki-Adi-Mundi", "Kit Fisto", "Eeth Koth", "Adi Gallia", "Saesee Tiin", "Yarael Poof",
+                    "Plo Koon", "Mas Amedda", "Gregar Typho", "Corde", "Cliegg Lars", "Poggle the Lesser", "Luminara Unduli", "Barriss Offee", "Dorme", "Dooku",
+                    "Bail Prestor Organa", "Jango Fett", "Zam Wesell", "Dexter Jettster", "Lama Su", "Taun We", "Jocasta Nu", "R4-P17", "Wat Tambor", "San Hill",
+                    "Shaak Ti", "Grievous", "Tarfful", "Raymus Antilles", "Sly Moore", "Tion Medon", "Finn", "Rey", "Poe Dameron", "BB8", "Captain Phasma",];
+                words.innerHTML = "<div>Who lives on " + holder[0].name + "?</div>";
+                ans.innerHTML = "<button>" + answers[people] + "</button>";
                 ans2.innerHTML = "<button onclick='youRight()'>" + holder[1].name + "</button>";
-                ans3.innerHTML = "<button>" + answers[species + 4] + "</button>";
-                ans4.innerHTML = "<button>" + answers[species - 5] + "</button>";
+                ans3.innerHTML = "<button>" + answers[people + 4] + "</button>";
+                ans4.innerHTML = "<button>" + answers[people - 5] + "</button>";
                 break;
             case 1:
                 answers = ["Tatooine", "Alderaan", "Yavin IV", "Hoth", "Dagobah", "Bespin", "Endor", "Naboo", "Coruscant", "Kamino", "Geonosis", "Utapau",
@@ -49,7 +53,7 @@ window.onload = function () {
                     "Sullust", "Toydaria", "Malastare", "Dathomir", "Ryloth", "Aleen Minor", "Vulpter", "Troiken", "Tund", "Haruun Kal", "Cerea",
                     "Glee Anselm", "Iridonia", "Tholoth", "Iktotch", "Quermia", "Dorin", "Champala", "Mirial", "Serenno", "Concord Dawn", "Zolan",
                     "Ojom", "Skako", "Muunilinst", "Shili", "Kalee", "Umbara", "Jakku"];
-                words.innerHTML = "<div>Where is " + holder[0].name + " from?</div>";
+                words.innerHTML = "<div>In which film is " + holder[0].name + " a setting?</div>";
                 ans.innerHTML = "<button>" + answers[planets] + "</button>";
                 ans2.innerHTML = "<button onclick='youRight()'>" + holder[2].name + "</button>";
                 ans3.innerHTML = "<button>" + answers[planets + 4] + "</button>";
@@ -78,14 +82,13 @@ window.onload = function () {
 
     function loadComplete(evt) {
         data = JSON.parse(request.responseText);
-        console.log(data.name);
+        console.log(data);
         holder.push(data);
         if (step == 1) {
-            loadData(data.species);
-            // answers();
+            loadData(data.residents[0]);
         }
         if (step == 2) {
-            loadData(data.homeworld);
+            loadData(data.films[0]);
         }
         if (step == 3) {
             console.log(holder);
